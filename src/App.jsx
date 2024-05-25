@@ -28,18 +28,21 @@ export default function App() {
   
   const [listOfTasks, setListOfTask] = useState(tasks)
 
-
-
-  const allTasks = () => setListOfTask(tasks)
-
-  const completedTasks = () => { 
-    let filteredlist = tasks.filter((t) => t.status )
-    setListOfTask(filteredlist)
-  }
-
-  const incompletedTasks = () => { 
-    let filteredlist = tasks.filter((t) => !t.status )
-    setListOfTask(filteredlist)
+  const filterList = (filterByText) => {
+    switch (filterByText) {
+      case "All":
+        setListOfTask(tasks)
+        break;
+      case "Completed":
+        setListOfTask(tasks.filter((item) => item.status))
+        break;
+      case "Incompleted":
+        setListOfTask(tasks.filter((item) => !item.status))
+        break;
+      default:
+        setListOfTask(tasks)
+        break;
+    }
   }
 
   return (
@@ -51,15 +54,15 @@ export default function App() {
 
       <div className=" my-6 flex justify-center">
 
-        <div onClick={allTasks}>
+        <div onClick={()=>{filterList("All")}}>
           <MyButton text="All" cl="bg-blue-500" />
         </div>
 
-        <div onClick={completedTasks}>
+        <div onClick={()=>{filterList("Completed")}}>
           <MyButton text="Completed" cl="bg-green-500" />
         </div>
 
-        <div onClick={incompletedTasks}>
+        <div onClick={()=>{filterList("Incompleted")}}>
           <MyButton text="Incompleted" cl="bg-red-500" />
         </div>
 
