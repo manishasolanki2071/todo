@@ -28,6 +28,20 @@ export default function App() {
   
   const [listOfTasks, setListOfTask] = useState(tasks)
 
+
+
+  const allTasks = () => setListOfTask(tasks)
+
+  const completedTasks = () => { 
+    let filteredlist = tasks.filter((t) => t.status )
+    setListOfTask(filteredlist)
+  }
+
+  const incompletedTasks = () => { 
+    let filteredlist = tasks.filter((t) => !t.status )
+    setListOfTask(filteredlist)
+  }
+
   return (
     <div className="bg-gray-600 md:mx-64 md:my-28">
       <div className="text-center ">
@@ -37,22 +51,15 @@ export default function App() {
 
       <div className=" my-6 flex justify-center">
 
-        <div onClick={()=> {setListOfTask(tasks)
-        }}>
+        <div onClick={allTasks}>
           <MyButton text="All" cl="bg-blue-500" />
         </div>
 
-        <div onClick={()=> {
-          let filteredlist = tasks.filter((t) => t.status )
-          setListOfTask(filteredlist)
-        }}>
+        <div onClick={completedTasks}>
           <MyButton text="Completed" cl="bg-green-500" />
         </div>
 
-        <div onClick={()=> {
-          let filteredlist = tasks.filter((t) => !t.status )
-          setListOfTask(filteredlist)
-        }}>
+        <div onClick={incompletedTasks}>
           <MyButton text="Incompleted" cl="bg-red-500" />
         </div>
 
