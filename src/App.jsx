@@ -41,17 +41,17 @@ export default function App() {
 
       <div className=" my-6 flex justify-center">
 
-        <div onClick={()=>{filterList()}}>
-          <MyButton text="All" cl="bg-blue-500" />
-        </div>
+        
+          <MyButton text="All" color="bg-blue-500" filter = {()=>{filterList()}} />
+        
 
-        <div onClick={()=>{filterList(true)}}>
-          <MyButton text="Completed" cl="bg-green-500" />
-        </div>
+        
+          <MyButton text="Completed" color="bg-green-500" filter = {()=>{filterList(true)}} />
+        
 
-        <div onClick={()=>{filterList(false)}}>
-          <MyButton text="Incompleted" cl="bg-red-500" />
-        </div>
+        
+          <MyButton text="Incompleted" color="bg-red-500" filter= {() => {filterList(false)}} />
+        
 
       </div>
 
